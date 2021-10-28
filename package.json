@@ -1,5 +1,5 @@
 {
-  "name": "twitter-lite",
+  "name": "@iamduncan/twitter-lite",
   "version": "1.1.0",
   "description": "Tiny, full-featured client/server REST/stream library for the Twitter API",
   "source": "twitter.js",
@@ -10,7 +10,10 @@
     "dist",
     "index.d.ts"
   ],
-  "repository": "draftbit/twitter-lite",
+  "repository": "git@github.com:iamduncan/twitter-lite.git",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/iamduncan"
+  },
   "homepage": "https://github.com/draftbit/twitter-lite",
   "author": "Peter Piekarczyk <peter@peterp.me>",
   "contributors": [
