@@ -6,12 +6,12 @@ const Twitter = require('../twitter');
 const {
   TWITTER_CONSUMER_KEY,
   TWITTER_CONSUMER_SECRET,
-  ACCESS_TOKEN,
+  ACCESS_TOKEN_KEY,
   ACCESS_TOKEN_SECRET,
 } = process.env;
 
-const STRING_WITH_SPECIAL_CHARS = "`!@#$%^&*()-_=+[{]}\\|;:'\",<.>/? ✓";
-const DIRECT_MESSAGE_RECIPIENT_ID = '1253003423055843328'; // https://twitter.com/twlitetest
+const STRING_WITH_SPECIAL_CHARS = '`!@#$%^&*()-_=+[{]}\\|;:\'",<.>/? ✓';
+const DIRECT_MESSAGE_RECIPIENT_ID = '1494993944182239232'; // https://twitter.com/twlitetest
 const TEST_IMAGE = fs.readFileSync(path.join(__dirname, 'test.gif'));
 
 function newClient(subdomain = 'api') {
@@ -19,7 +19,7 @@ function newClient(subdomain = 'api') {
     subdomain,
     consumer_key: TWITTER_CONSUMER_KEY,
     consumer_secret: TWITTER_CONSUMER_SECRET,
-    access_token_key: ACCESS_TOKEN,
+    access_token_key: ACCESS_TOKEN_KEY,
     access_token_secret: ACCESS_TOKEN_SECRET,
   });
 }
@@ -57,7 +57,7 @@ describe('auth', () => {
       subdomain: 'api',
       consumer_key: TWITTER_CONSUMER_KEY,
       consumer_secret: TWITTER_CONSUMER_SECRET,
-      access_token_key: ACCESS_TOKEN,
+      access_token_key: ACCESS_TOKEN_KEY,
       access_token_secret: 'xyz',
     });
 
@@ -222,7 +222,7 @@ describe('uploading', () => {
 
   it('should upload a picture, and add alt text to it', async () => {
     // Upload picture
-    const base64Image = new Buffer(TEST_IMAGE).toString('base64');
+    const base64Image = new Buffer.from(TEST_IMAGE).toString('base64');
     const mediaUploadResponse = await uploadClient.post('media/upload', {
       media_data: base64Image,
     });
